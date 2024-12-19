@@ -2,8 +2,13 @@ import { Container, Sprite, Text, withPixiApp } from '@pixi/react'
 import React from 'react'
 
 function UiContainer(props) {
+   
+    const handleClick = () => {
+       props.startSpin();
+    };
+
     return (
-        <Container  width={props.width} height={props.height} x={50} y={-50}>
+        <Container width={props.width} height={props.height} x={0} y={-50} scale={0.8}>
             <Sprite
                 position={0}
                 image="/assets/loading-screen/Loading_Screen_Background.png"
@@ -66,6 +71,9 @@ function UiContainer(props) {
                 x={1230}
                 y={775}
                 image="/assets/Game UI/desktop/Spin_Idle.png"
+                interactive={true}
+                pointerdown={handleClick} 
+                cursor="pointer" 
             />
             <Sprite
                 x={535}

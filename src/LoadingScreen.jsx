@@ -2,34 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Container, Sprite, Text, withPixiApp } from '@pixi/react';
 import * as PIXI from 'pixi.js';
 
-const LoadingScreen = ({ assets, onComplete }) => {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const loadAssets = async () => {
-      let loaded = 0;
-
-      for (const asset of assets) {
-        console.log(asset)
-        try {
-          await PIXI.Assets.load(asset);
-          loaded += 1;
-          setProgress(Math.floor((loaded / assets.length) * 100));
-        } catch (error) {
-          console.error(`Error loading asset: ${asset}`, error);
-        }
-      }
-
-      if (onComplete) onComplete();
-    };
-
-    loadAssets();
-  }, [assets, onComplete]);
-
+const LoadingScreen = ({ progress }) => {
   return (
-    <Container>
+    <Container width={window.innerWidth} height={window.innerHeight} x={0} y={-50}>
       <Sprite
-        position={0}
+        x={0}
+        y={0}
         image="/assets/loading-screen/Loading_Screen_Background.png"
       />
       <Sprite

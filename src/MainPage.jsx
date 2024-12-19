@@ -4,11 +4,9 @@ import * as PIXI from 'pixi.js';
 import UiContainer from './UiContainer';
 import Reels from './components/Reels';
 import { Texture } from "pixi.js";
+import GameContainer from './components/GameContainer';
 
 function MainPage(props) {
-    const app = PIXI.Application;
-    globalThis.__PIXI_APP__ = app;
-
     PIXI.Assets.load([
         '/assets/symbols/H1.png',
         '/assets/symbols/H2.png',
@@ -42,18 +40,10 @@ function MainPage(props) {
         Texture.from('/assets/symbols/BONUS.png')
     ];
 
-    // const fakeData = ["🍒", "🍋", "⭐", "🔔", "💎", "🍎", "🍇", "🍊", "🍌", "7️⃣", "🍒", "🍋", "⭐", "🔔", "💎"];
-
 
     return (
         <React.Fragment>
-            <UiContainer width={props.width} height={props.height} app={app}></UiContainer>
-            <Reels
-                data={slotTextures}
-                gridSize={{ rows: 3, columns: 5  }}
-                symbolSize={{ width: 200, height: 200 }} // Size of each symbol
-                position={{ x: 445, y: 100 }} // Position of the reel on screen
-            />
+            <GameContainer width={props.width} height={props.height} app={props.app}  data={slotTextures}></GameContainer>
         </React.Fragment>
 
     )
