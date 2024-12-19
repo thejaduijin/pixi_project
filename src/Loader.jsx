@@ -1,82 +1,39 @@
-import { useEffect, useRef } from 'react';
-import * as PIXI from 'pixi.js';
-import { withPixiApp } from '@pixi/react';
+// import React, { useEffect } from 'react';
+// import * as PIXI from 'pixi.js';
+// import { withPixiApp } from '@pixi/react';
 
-const Loader = () => {
-    const appRef = useRef(null);
-    const spritesRef = useRef({});
+// const PixiLoader = ({ config, onResourcesLoaded }) => {
+//   useEffect(() => {
+//     const loadResources = async () => {
+//       const resources = {};
 
-    useEffect(() => {
-        // Create a PIXI application
-        const app = new PIXI.Application({
-            width: 800,
-            height: 600,
-            backgroundColor: 0x1099bb,
-        });
-        appRef.current = app;
+//       for (const asset of config.loader) {
+//         const key = extractKeyFromAsset(asset.key);
 
-        // Append the PIXI view to the DOM
-        document.body.appendChild(app.view);
+//         try {
+//           console.log(`Loading asset: ${asset.data.default}`);
+//           resources[key] = await PIXI.Assets.load(asset.data.default);
+//           console.log(`Successfully loaded: ${asset.data.default}`);
+//         } catch (error) {
+//           console.error(`Error loading asset: ${asset.data.default}`, error);
+//         }
+//       }
 
-        // Initialize loader
-        const loader = PIXI.Loader ? new PIXI.Loader() : PIXI.loaders.Loader.shared;
+//       if (onResourcesLoaded) {
+//         onResourcesLoaded(resources);
+//       }
+//     };
 
-        // Add resources
-        loader
-            .add('bunny', 'data/bunny.png')
-            .add('spaceship', 'assets/spritesheet.json')
-            .add('scoreFont', 'assets/score.fnt');
+//     loadResources();
+//   }, [config, onResourcesLoaded]);
 
-        // Middleware for caching and parsing
-        loader.pre((resource, next) => {
-            console.log(`Preloading: ${resource.url}`);
-            next();
-        });
+//   const extractKeyFromAsset = (key) => {
+//     let filename = key.substring(key.lastIndexOf('/') + 1);
+//     return filename.split('.')[0];
+//   };
 
-        loader.use((resource, next) => {
-            console.log(`Parsing: ${resource.url}`);
-            next();
-        });
-
-        // Load resources
-        loader.load((loader, resources) => {
-            const sprites = spritesRef.current;
-
-            // Create sprites and add them to the stage
-            sprites.bunny = new PIXI.TilingSprite(resources.bunny.texture);
-            sprites.spaceship = new PIXI.TilingSprite(resources.spaceship.texture);
-            sprites.scoreFont = new PIXI.TilingSprite(resources.scoreFont.texture);
-
-            // Add sprites to the PIXI stage
-            app.stage.addChild(sprites.bunny);
-            app.stage.addChild(sprites.spaceship);
-            app.stage.addChild(sprites.scoreFont);
-
-            // Position the sprites
-            sprites.bunny.position.set(100, 100);
-            sprites.spaceship.position.set(300, 100);
-            sprites.scoreFont.position.set(500, 100);
-        });
-
-        // Handle loader signals
-        loader.onProgress.add(() => console.log('Loading progress...'));
-        loader.onError.add((err) => console.error('Error loading resource:', err));
-        loader.onLoad.add(() => console.log('Resource loaded'));
-        loader.onComplete.add(() => console.log('All resources loaded'));
-
-        // Cleanup on unmount
-        return () => {
-            app.destroy(true, { children: true });
-            if (app.view && app.view.parentNode) {
-                app.view.parentNode.removeChild(app.view);
-            }
-        };
-    }, []);
-
-    return null; // No direct DOM rendering, PIXI handles the canvas
-};
+//   return null;
+// };
 
 
-
-
-export default withPixiApp(Loader);
+// export default withPixiApp(PixiLoader);

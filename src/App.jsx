@@ -1,23 +1,34 @@
 import './App.css';
-// import { useMemo } from 'react';
-// import { BlurFilter, } from 'pixi.js';
 import { Stage, } from '@pixi/react';
 import MainPage from './MainPage';
-import { Renderer } from 'pixi.js';
-// import MyContainer from './MyContainer';
+import LoadingScreen from './LoadingScreen';
+import { useState } from 'react';
+import * as PIXI from 'pixi.js'
 
 
 const App = () => {
-  const width = 800;
-  const height = 600;
-  // globalThis.__PIXI_STAGE__ = Stage;
-  // globalThis.__PIXI_RENDERER__ = Renderer;
-  // const blurFilter = useMemo(() => new BlurFilter(2), []);
-  // const bunnyUrl = 'https://pixijs.io/pixi-react/img/bunny.png';
+  const app = PIXI.Application;
+  globalThis.__PIXI_APP__ = app;
+
+  console.log(window.innerWidth)
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const assets = [
+    '/assets/loading-screen/Game_Logo.png',
+    '/assets/loading-screen/Loading_bar_empty_1.png',
+  ];
+
+  const handleLoadingComplete = () => {
+    setTimeout(() => setIsLoaded(true), 50000);
+  };
+
   return (
-    <Stage width={900} height={700} options={{ background: 0x1099bb }}>
-      <MainPage width={width} height={height}></MainPage>
-      {/* <MyContainer width={width} height={height} /> */}
+    <Stage width={window.innerWidth } height={window.innerHeight - 5 } resizeTo={window} options={{ background: 0x000000 }} app={app}>
+      {!isLoaded ? (
+        <LoadingScreen assets={assets} onComplete={handleLoadingComplete} />
+      ) : (
+        <MainPage width={window.innerWidth} height={window.innerHeight}></MainPage>
+      )}
     </Stage>
   );
 };

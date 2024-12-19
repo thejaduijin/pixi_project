@@ -1,21 +1,17 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Container, Text } from '@pixi/react';
-// import { useApp } from '@pixi/react';
 import * as PIXI from 'pixi.js'
 import { TextStyle } from 'pixi.js';
 import { withPixiApp } from '@pixi/react';
 import { BlurFilter } from 'pixi.js';
-import { useMemo } from 'react';
-import Loader from './Loader';
 
 function MainPage(props) {
     const app = PIXI.Application;
     globalThis.__PIXI_APP__ = app;
-
     const blurFilter = useMemo(() => new BlurFilter(2), []);
+
     return (
-        <Container width={props.width} height={props.height} x={200} y={200} >
-            {/* <Loader></Loader> */}
+        <Container width={props.width} height={props.height} x={0} y={0} >
             <Text
                 text="Hello World"
                 anchor={0.5}
@@ -38,5 +34,6 @@ function MainPage(props) {
     )
 }
 
-// const MyComponent = withPixiApp(MainPage);
 export default withPixiApp(MainPage);
+
+
