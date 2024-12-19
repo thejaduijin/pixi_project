@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Sprite, withPixiApp } from "@pixi/react";
 
 const Reels = ({ data, gridSize, symbolSize, position }) => {
-    const { columns, rows } = gridSize; // 3x5 grid
+    const { rows, columns } = gridSize; // 3x5 grid
 
     return (
         <Container position={position}>

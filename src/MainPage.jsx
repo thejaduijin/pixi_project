@@ -37,6 +37,9 @@ function MainPage(props) {
         Texture.from('/assets/symbols/WILD.png'),
         Texture.from('/assets/symbols/SCATTER.png'),
         Texture.from('/assets/symbols/BONUS.png'),
+        Texture.from('/assets/symbols/WILD.png'),
+        Texture.from('/assets/symbols/SCATTER.png'),
+        Texture.from('/assets/symbols/BONUS.png')
     ];
 
     // const fakeData = ["🍒", "🍋", "⭐", "🔔", "💎", "🍎", "🍇", "🍊", "🍌", "7️⃣", "🍒", "🍋", "⭐", "🔔", "💎"];
@@ -47,7 +50,7 @@ function MainPage(props) {
             <UiContainer width={props.width} height={props.height} app={app}></UiContainer>
             <Reels
                 data={slotTextures}
-                gridSize={{ columns: 3, rows: 5 }}
+                gridSize={{ rows: 3, columns: 5  }}
                 symbolSize={{ width: 200, height: 200 }} // Size of each symbol
                 position={{ x: 445, y: 100 }} // Position of the reel on screen
             />
