@@ -131,10 +131,9 @@
 
 
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Container, Sprite, withPixiApp } from "@pixi/react";
 import * as PIXI from "pixi.js";
-
 const Reels = ({ data, gridSize, symbolSize, position, isSpinning }) => {
   const { rows, columns } = gridSize; // 3x5 grid
   const containerRef = useRef(null);
@@ -143,31 +142,31 @@ const Reels = ({ data, gridSize, symbolSize, position, isSpinning }) => {
     if (!isSpinning) return;
 
     const ticker = new PIXI.Ticker();
-    let offset = 0;
+    const reelSpeed = 10; // Speed of the reel movement in pixels
 
     ticker.add(() => {
-      offset += 10; // Adjust speed of the spin
-      if (containerRef.current) {
-        containerRef.current.children.forEach((child) => {
-          child.y += 10; // Move symbols down
+        if (containerRef.current) {
+          containerRef.current.children.forEach((child, index) => {
+            child.y += reelSpeed; // Move each symbol down
+  
+            // Reset the position if the symbol goes out of bounds
+            if (child.y >= symbolSize.height * rows) {
+              child.y -= symbolSize.height * rows; // Move to the top
+            }
+          });
+        }
+      });
 
-          // Reset the position if the symbol goes out of bounds
-          if (child.y >= symbolSize.height * rows) {
-            child.y -= symbolSize.height * rows + symbolSize.height; // Move to the top
-          }
-        });
-      }
-    });
+      ticker.start();
 
-    ticker.start();
-
-    return () => {
-      ticker.destroy();
-    };
-  }, [isSpinning, rows, symbolSize.height]);
+      return () => {
+        ticker.stop();
+        ticker.destroy();
+      };
+    }, [isSpinning, rows, symbolSize.height]);
 
   return (
-    <Container position={position} scale={0.8} ref={containerRef}>
+    <Container position={position} scale={0.8} ref={containerRef} >
       {data.map((symbol, index) => {
         const col = index % columns; // Column index
         const row = Math.floor(index / columns); // Row index
