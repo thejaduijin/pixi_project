@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Graphics, Sprite, Text, withPixiApp } from '@pixi/react';
+import { Container, Sprite, Text, withPixiApp } from '@pixi/react';
 import * as PIXI from 'pixi.js';
 
 const LoadingScreen = ({ assets, onComplete }) => {
@@ -26,21 +26,6 @@ const LoadingScreen = ({ assets, onComplete }) => {
     loadAssets();
   }, [assets, onComplete]);
 
-
-  // function addMask() {
-  //   if (!this.maskingArr.length) {
-  //     const thing = new PIXI.Graphics();
-  //     thing.beginFill(0xDE3249);
-  //     thing.drawRect(this.props.constant.configGame.loaderBarMaskX, this.props.constant.configGame.loaderBarMaskY, this.props.constant.configGame.loaderBarWidth, this.props.constant.configGame.loaderBarHeight);
-  //     thing.endFill();
-  //     this.loaderRect.addChild(thing);
-  //     thing.x = 0;
-  //     thing.y = 0;
-  //     thing.alpha = 1
-  //     this.loaderRect.mask = thing;
-  //     this.maskingArr.push(thing);
-  //   }
-  // }
   return (
     <Container>
       <Sprite
@@ -64,7 +49,7 @@ const LoadingScreen = ({ assets, onComplete }) => {
         y={730}
         width={(1029 * progress) / 100}
         height={105}
-        image="/public/assets/loading-screen/Loading_bar_fill_2.png"
+        image="/assets/loading-screen/Loading_bar_fill_2.png"
       />
       <Sprite
         x={550}
