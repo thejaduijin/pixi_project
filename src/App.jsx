@@ -13,7 +13,6 @@ const App = () => {
   console.log(window.innerWidth)
   const [isLoaded, setIsLoaded] = useState(false);
 
- 
   const assets = [
     '/assets/loading-screen/Game_Logo.png',
     '/assets/loading-screen/Loading_bar_empty_1.png',

@@ -1,130 +1,57 @@
-import React, { useMemo } from 'react'
-import { Container, Sprite, Text } from '@pixi/react';
-import * as PIXI from 'pixi.js'
-import { TextStyle } from 'pixi.js';
+import React from 'react'
 import { withPixiApp } from '@pixi/react';
-import { BlurFilter } from 'pixi.js';
-// import JsonAnimation from './JsonAnimation';
+import * as PIXI from 'pixi.js';
+import UiContainer from './UiContainer';
+import Reels from './components/Reels';
+import { Texture } from "pixi.js";
 
 function MainPage(props) {
     const app = PIXI.Application;
     globalThis.__PIXI_APP__ = app;
-    const blurFilter = useMemo(() => new BlurFilter(2), []);
 
+    PIXI.Assets.load([
+        '/assets/symbols/H1.png',
+        '/assets/symbols/H2.png',
+        '/assets/symbols/H3.png',
+        '/assets/symbols/H4.png',
+        '/assets/symbols/L1.png',
+        '/assets/symbols/L2.png',
+        '/assets/symbols/L3.png',
+        '/assets/symbols/L4.png',
+        '/assets/symbols/L5.png',
+        '/assets/symbols/WILD.png',
+        '/assets/symbols/SCATTER.png',
+        '/assets/symbols/BONUS.png',
+    ]);
 
-    // const handleAnimationComplete = () => {
-    //     console.log('Animation loaded!');
-    // };
+    const slotTextures = [
+        Texture.from('/assets/symbols/H1.png'),
+        Texture.from('/assets/symbols/H2.png'),
+        Texture.from('/assets/symbols/H3.png'),
+        Texture.from('/assets/symbols/H4.png'),
+        Texture.from('/assets/symbols/L1.png'),
+        Texture.from('/assets/symbols/L2.png'),
+        Texture.from('/assets/symbols/L3.png'),
+        Texture.from('/assets/symbols/L4.png'),
+        Texture.from('/assets/symbols/L5.png'),
+        Texture.from('/assets/symbols/WILD.png'),
+        Texture.from('/assets/symbols/SCATTER.png'),
+        Texture.from('/assets/symbols/BONUS.png'),
+    ];
+
+    // const fakeData = ["🍒", "🍋", "⭐", "🔔", "💎", "🍎", "🍇", "🍊", "🍌", "7️⃣", "🍒", "🍋", "⭐", "🔔", "💎"];
+
 
     return (
-        <Container width={props.width} height={props.height} x={50} y={-50} >
-            <Sprite
-                position={0}
-                image="/assets/loading-screen/Loading_Screen_Background.png"
+        <React.Fragment>
+            <UiContainer width={props.width} height={props.height} app={app}></UiContainer>
+            <Reels
+                data={slotTextures}
+                gridSize={{ columns: 3, rows: 5 }}
+                symbolSize={{ width: 200, height: 200 }} // Size of each symbol
+                position={{ x: 445, y: 100 }} // Position of the reel on screen
             />
-
-            {/* <JsonAnimation
-                jsonPath="/assets/Animations/background/BaseGame_BG.json"
-                onComplete={handleAnimationComplete}
-                position={{ x: window.innerWidth / 2, y: window.innerHeight / 2 }}
-            /> */}
-            <Text
-                text=""
-                anchor={0.5}
-                x={220}
-                y={150}
-                filters={[blurFilter]}
-                style={
-                    new TextStyle({
-                        align: 'center',
-                        fill: '0xffffff',
-                        fontSize: 50,
-                        letterSpacing: 20,
-                        dropShadow: true,
-                        dropShadowColor: '#E72264',
-                        dropShadowDistance: 6,
-                    })
-                }
-            />
-            <Sprite
-                x={165}
-                y={0}
-                image="/assets/reelFrame.png"
-                scale={0.9}
-            />
-            <Sprite
-                x={700}
-                y={0}
-                image="/assets/logo.png"
-            />
-            <Sprite
-                x={390}
-                y={740}
-                width={1050}
-
-                image="/assets/Game UI/desktop/Frame.png"
-            />
-            <Sprite
-                x={470}
-                y={850}
-                scale={0.6}
-                image="/assets/Game UI/desktop/Frame.png"
-            />
-            <Sprite
-                x={720}
-                y={850}
-                scale={0.6}
-                image="/assets/Game UI/desktop/Frame.png"
-            />
-            <Sprite
-                x={970}
-                y={850}
-                scale={0.6}
-                image="/assets/Game UI/desktop/Frame.png"
-            />
-            <Sprite
-                x={400}
-                y={850}
-                scale={0.6}
-                image="/assets/Game UI/desktop/Info_Idle.png"
-            />
-            <Sprite
-                x={960}
-                y={845}
-                scale={0.6}
-                image="/assets/Game UI/desktop/Arrow_L_Idle.png"
-            />
-            <Sprite
-                x={1150}
-                y={845}
-                scale={0.6}
-                image="/assets/Game UI/desktop/Arrow_R_Idle.png"
-            />
-            <Sprite
-                x={1230}
-                y={775}
-                image="/assets/Game UI/desktop/Spin_Idle.png"
-            />
-            <Sprite
-                x={535}
-                y={860}
-                scale={0.5}
-                image="/assets/Game UI/desktop/Balance_Text.png"
-            />
-            <Sprite
-                x={780}
-                y={860}
-                scale={0.5}
-                image="/assets/Game UI/desktop/Win_Text.png"
-            />
-
-            <Sprite
-                x={1035}
-                y={860}
-                scale={0.5}
-                image="/assets/Game UI/desktop/Bet_Text.png"
-            />
-        </Container>
+        </React.Fragment>
 
     )
 }
