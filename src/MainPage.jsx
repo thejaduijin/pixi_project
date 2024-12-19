@@ -100,10 +100,29 @@ function MainPage(props) {
                 scale={0.6}
                 image="/assets/Game UI/desktop/Arrow_R_Idle.png"
             />
-             <Sprite
+            <Sprite
                 x={1230}
                 y={775}
                 image="/assets/Game UI/desktop/Spin_Idle.png"
+            />
+            <Sprite
+                x={535}
+                y={860}
+                scale={0.5}
+                image="/assets/Game UI/desktop/Balance_Text.png"
+            />
+            <Sprite
+                x={780}
+                y={860}
+                scale={0.5}
+                image="/assets/Game UI/desktop/Win_Text.png"
+            />
+
+            <Sprite
+                x={1035}
+                y={860}
+                scale={0.5}
+                image="/assets/Game UI/desktop/Bet_Text.png"
             />
         </Container>
 
