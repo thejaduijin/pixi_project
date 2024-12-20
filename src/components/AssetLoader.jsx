@@ -1,6 +1,6 @@
 import { Container, withPixiApp } from '@pixi/react';
 import React, { useEffect, useState } from 'react';
-import LoadingScreen from '../LoadingScreen';
+import LoadingScreen from './LoadingScreen';
 import * as PIXI from 'pixi.js';
 import { AssetManager } from '../assetManager/AssetManager';
 

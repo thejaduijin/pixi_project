@@ -1,10 +1,8 @@
 import React from 'react'
 import { withPixiApp } from '@pixi/react';
 import * as PIXI from 'pixi.js';
-import UiContainer from './UiContainer';
-import Reels from './components/Reels';
 import { Texture } from "pixi.js";
-import GameContainer from './components/GameContainer';
+import GameContainer from './GameContainer';
 
 function MainPage(props) {
     PIXI.Assets.load([
@@ -43,9 +41,8 @@ function MainPage(props) {
 
     return (
         <React.Fragment>
-            <GameContainer width={props.width} height={props.height} app={props.app}  data={slotTextures}></GameContainer>
+            <GameContainer width={props.width} height={props.height} app={props.app} data={slotTextures}></GameContainer>
         </React.Fragment>
-
     )
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Reels from "./Reels";
-import UiContainer from "../UiContainer";
+import UiContainer from "./UiContainer";
 import { withPixiApp } from "@pixi/react";
 
 const GameContainer = (props) => {
@@ -36,7 +36,7 @@ const GameContainer = (props) => {
 
   return (
     <>
-      <UiContainer startSpin={startSpin} setIsSpinning={setIsSpinning}  width={props.width} height={props.height} app={props.app} />
+      <UiContainer startSpin={startSpin} setIsSpinning={setIsSpinning}  width={props.width} height={props.height} app={props.app} texture={props.data} />
       <Reels
         data={data}
         gridSize={{ rows: 3, columns: 5 }}

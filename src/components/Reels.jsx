@@ -33,7 +33,7 @@ const Reels = ({ data, gridSize, symbolSize, position, isSpinning }) => {
   }, [isSpinning, rows, symbolSize.height]);
 
   return (
-    <Container position={position} scale={0.8} ref={containerRef} >
+    <Container position={position}  ref={containerRef}>
       {data.map((symbol, index) => {
         const col = index % columns; // Column index
         const row = Math.floor(index / columns); // Row index

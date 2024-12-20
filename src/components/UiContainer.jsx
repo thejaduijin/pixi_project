@@ -2,6 +2,7 @@ import { Container, Sprite, withPixiApp } from '@pixi/react'
 import React, { useState } from 'react'
 
 function UiContainer(props) {
+    console.log(props.texture)
 
     const [showStopButton, setShowStopButton] = useState(false);
 
@@ -13,12 +14,11 @@ function UiContainer(props) {
     const handleStopClick = () => {
         props.setIsSpinning(false)
         setShowStopButton(false);
-        console.log('Stop button clicked!');
     };
 
 
     return (
-        <Container width={props.width} height={props.height} x={0} y={-50} scale={0.8}>
+        <Container width={props.width} height={props.height} x={0} y={-50} >
             <Sprite
                 position={0}
                 image="/assets/loading-screen/Loading_Screen_Background.png"
