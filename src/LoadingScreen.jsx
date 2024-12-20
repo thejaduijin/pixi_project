@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Container, Sprite, Text, withPixiApp } from '@pixi/react';
 import * as PIXI from 'pixi.js';
 
