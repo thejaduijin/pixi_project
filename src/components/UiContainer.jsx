@@ -1,24 +1,39 @@
 import { Container, Sprite, withPixiApp } from '@pixi/react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Howl } from 'howler';
+// import animationData from './path-to-your-animation.json'; 
+// import '/assets/Animations/background/BaseGame_BG.json'; 
+
 
 function UiContainer(props) {
-    console.log(props.texture)
-
     const [showStopButton, setShowStopButton] = useState(false);
+   
+    const spinAudio = new Howl({
+        src: ['/assets/sounds/reels_spin.wav'], // Replace with the correct file path
+        volume: 1.0, // Adjust volume as needed
+    });
 
     const handleSpinClick = () => {
-        props.startSpin();
-        setShowStopButton(true);
+        spinAudio.play(); // Play the audio
+        props.startSpin(); // Start the spin
+        setShowStopButton(true); // Show the stop button
     };
 
     const handleStopClick = () => {
         props.setIsSpinning(false)
         setShowStopButton(false);
+        spinAudio.stop(); // Stop the audio
     };
+
+    useEffect(() => {
+        if (!props.isSpinning) {
+            setShowStopButton(false); // Automatically hide the stop button
+        }
+    }, [props.isSpinning]);
 
 
     return (
-        <Container width={props.width} height={props.height} x={0} y={-50} >
+        <Container width={props.width} height={props.height} x={0} y={-50} scale={0.8}>
             <Sprite
                 position={0}
                 image="/assets/loading-screen/Loading_Screen_Background.png"
@@ -41,7 +56,6 @@ function UiContainer(props) {
                 x={390}
                 y={740}
                 width={1050}
-
                 image="/assets/Game UI/desktop/Frame.png"
             />
             {/*  Bottom Bar Frame */}

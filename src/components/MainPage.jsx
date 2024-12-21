@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { withPixiApp } from '@pixi/react';
 import * as PIXI from 'pixi.js';
 import { Texture } from "pixi.js";
 import GameContainer from './GameContainer';
+import { Howl } from 'howler';
 
 function MainPage(props) {
+
+    const mainMusic = new Howl({
+        src: ['/assets/sounds/music_main.wav'], // Replace with the correct file path
+        volume: 1.0, // Adjust volume as needed
+    });
+
+    const handleSpinClick = () => {
+        mainMusic.play(); // Play the audio
+    };
+
+    useEffect(() => {
+        handleSpinClick();
+        console.log("music is playing")
+    }, []);
+
+    
+
     PIXI.Assets.load([
         '/assets/symbols/H1.png',
         '/assets/symbols/H2.png',
@@ -41,7 +59,7 @@ function MainPage(props) {
 
     return (
         <React.Fragment>
-            <GameContainer width={props.width} height={props.height} app={props.app} data={slotTextures}></GameContainer>
+            <GameContainer scale={0.8} width={props.width} height={props.height} app={props.app} data={slotTextures}></GameContainer>
         </React.Fragment>
     )
 }

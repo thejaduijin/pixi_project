@@ -36,7 +36,7 @@ const GameContainer = (props) => {
 
   return (
     <>
-      <UiContainer startSpin={startSpin} setIsSpinning={setIsSpinning}  width={props.width} height={props.height} app={props.app} texture={props.data} />
+      <UiContainer isSpinning={isSpinning} scale={0.8} startSpin={startSpin} setIsSpinning={setIsSpinning}  width={props.width} height={props.height} app={props.app} texture={props.data} />
       <Reels
         data={data}
         gridSize={{ rows: 3, columns: 5 }}
@@ -48,6 +48,6 @@ const GameContainer = (props) => {
   );
 };
 
-export default withPixiApp(GameContainer);
+ export default withPixiApp(GameContainer);
 
 
