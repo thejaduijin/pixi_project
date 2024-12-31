@@ -6,15 +6,13 @@ import GameContainer from './GameContainer';
 import { Howl } from 'howler';
 
 function MainPage(props) {
-    // const mainMusic = new Howl({
-    //     src: ['/assets/sounds/music_main.wav'], // Replace with the correct file path
-    //     volume: 1.0, // Adjust volume as needed
-    // });
-
-    // const music_main = PIXI.Assets.get('music_main');
+    const mainMusic = new Howl({
+        src: ['/assets/sounds/music_main.wav'],
+        volume: 1.0,
+    });
 
     const handleMusic = () => {
-        // music_main.play(); // Play the audio
+        mainMusic.play();
     };
 
     useEffect(() => {

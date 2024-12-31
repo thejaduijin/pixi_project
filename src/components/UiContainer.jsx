@@ -49,8 +49,8 @@ function UiContainer(props) {
                 texture={backgroundTexture}
             />
             <Sprite
-                x={165}
-                y={0}
+                x={window.innerWidth / 3}
+                y={window.innerHeight / 2}
                 scale={0.9}
                 texture={ReelFrameTexture}
             />

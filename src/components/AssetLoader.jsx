@@ -4,10 +4,10 @@ import LoadingScreen from './LoadingScreen';
 import * as PIXI from 'pixi.js';
 
 
-function AssetLoader({ onAssetsLoaded }) {
+function AssetLoader({ onAssetsLoaded,app }) {
     const [progress, setProgress] = useState(0);
-    const [loadedSounds, setLoadedSounds] = useState(null);
     const sounds = {}; // Store sounds here
+
 
     const assetList = {
         images: [
@@ -31,9 +31,6 @@ function AssetLoader({ onAssetsLoaded }) {
             { name: 'Frame', url: '/assets/Game UI/desktop/Frame.png' },
             { name: 'logo', url: '/assets/logo.png' },
         ],
-        sounds: [
-            { name: 'music_main', url: '/assets/sounds/music_main.wav' },
-        ],
     };
 
     async function preloadAssets() {
@@ -46,29 +43,6 @@ function AssetLoader({ onAssetsLoaded }) {
             loaded += 1;
         });
 
-        // Load sounds
-        // assetList.sounds.forEach(asset => {
-        //     promises.push(PIXI.Assets.load({ src: asset.url, alias: asset.name }));
-        //     loaded += 1;
-        // });
-
-        assetList.sounds.forEach(asset => {
-            promises.push(
-                new Promise((resolve) => {
-                    const sound = new Howl({
-                        src: [asset.url],
-                        preload: true,
-                        onload: () => {
-                            sounds[asset.name] = sound; // Store sound manually
-                            loaded++;
-                            resolve();
-                        },
-                    });
-                })
-            );
-        });
-
-
         setProgress(Math.floor((loaded / promises.length) * 100));
         await Promise.all(promises);
 
@@ -78,16 +52,14 @@ function AssetLoader({ onAssetsLoaded }) {
         }
     }
 
-
-
     // Start preloading assets when the component mounts
     useEffect(() => {
         preloadAssets();
-    }, []); // Empty dependency array ensures it runs only once
+    }, []); 
 
     return (
         <Container name="LoadingContainer">
-            <LoadingScreen progress={progress} loadedSounds={sounds} />
+            <LoadingScreen progress={progress} loadedSounds={sounds} app={app} />
         </Container>
     );
 }

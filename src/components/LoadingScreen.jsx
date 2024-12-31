@@ -2,7 +2,24 @@ import React from 'react';
 import { Container, Sprite, Text, withPixiApp } from '@pixi/react';
 import * as PIXI from 'pixi.js';
 
-const LoadingScreen = ({ progress }) => {
+const LoadingScreen = ({ progress, app }) => {
+  console.log(app);
+  // const uiContainer = new PIXI.Container({
+  //   x: 0,
+  //   y: 0,
+  // });
+  // uiContainer.name = "UiContainer";
+  // PIXI.Assets.load('/assets/loading-screen/Loading_Screen_Background.png');
+  // const bg = PIXI.Sprite.from('/assets/loading-screen/Loading_Screen_Background.png');
+  // bg.width = app.screen.width ;
+  // bg.height = app.screen.height;
+  // bg.x = 0;
+  // bg.y = 0;
+  // bg.zIndex=-2
+
+  // uiContainer.addChild(bg)
+  // app.stage.addChild(uiContainer);
+
   return (
     <Container width={window.innerWidth} height={window.innerHeight} x={0} y={-50} scale={0.8}>
       <Sprite

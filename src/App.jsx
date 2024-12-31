@@ -12,7 +12,6 @@ const App = () => {
     width: window.innerWidth,
     height: window.innerHeight - 5,
   });
-  const [sounds, setSounds] = useState(null);
 
   useEffect(() => {
     const app = new PIXI.Application({
@@ -21,15 +20,20 @@ const App = () => {
       resizeTo: window,
     });
 
-    document.body.appendChild(app.view);
     setAppInstance(app);
     globalThis.__PIXI_APP__ = app;
+
+    // const uiContainer = new PIXI.Container({
+    //   x: 0,
+    //   y: 0,
+    // });
+    // uiContainer.name = "UiContainer";
+    // app.stage.addChild(uiContainer);
 
     const handleResize = () => {
       const newWidth = window.innerWidth;
       const newHeight = window.innerHeight - 5;
       setDimensions({ width: newWidth, height: newHeight });
-      console.log("Resizing to:", newWidth, newHeight);
       app.renderer.resize(newWidth, newHeight);
     };
     handleResize(); //for initial sizing
@@ -43,10 +47,9 @@ const App = () => {
     };
   }, []);
 
-  const handleAssetsLoaded = (loadedSounds) => {
+  const handleAssetsLoaded = () => {
     console.log('Assets are loaded. Proceed to next step.');
     setTimeout(() => setIsLoaded(true), 1000);
-    setSounds(loadedSounds); // Store sounds
   };
 
   if (!appInstance) {
@@ -55,7 +58,7 @@ const App = () => {
 
   return (
     <Stage
-      app={appInstance}
+      // app={appInstance}
       id="mainCanvas"
       width={dimensions.width}
       height={dimensions.height}
@@ -63,7 +66,7 @@ const App = () => {
     >
       <Container name="mainContainer">
         {!isLoaded ? (
-          <AssetLoader onAssetsLoaded={handleAssetsLoaded} />
+          <AssetLoader onAssetsLoaded={handleAssetsLoaded} app={appInstance} />
         ) : (
           <MainPage
             width={dimensions.width}
