@@ -12,27 +12,29 @@ const App = () => {
     width: window.innerWidth,
     height: window.innerHeight - 5,
   });
+  const [sounds, setSounds] = useState(null);
 
   useEffect(() => {
-    // Create and expose the PIXI.Application instance
     const app = new PIXI.Application({
       width: dimensions.width,
       height: dimensions.height,
       resizeTo: window,
     });
-    globalThis.__PIXI_APP__ = app; // Expose for Pixi.js DevTools
+
+    document.body.appendChild(app.view);
     setAppInstance(app);
+    globalThis.__PIXI_APP__ = app;
 
-    // Resize event listener
     const handleResize = () => {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight - 5,
-      });
-      app.renderer.resize(window.innerWidth, window.innerHeight - 5);
+      const newWidth = window.innerWidth;
+      const newHeight = window.innerHeight - 5;
+      setDimensions({ width: newWidth, height: newHeight });
+      console.log("Resizing to:", newWidth, newHeight);
+      app.renderer.resize(newWidth, newHeight);
     };
+    handleResize(); //for initial sizing
 
-    // window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
       app.destroy(true, true); // Cleanup on unmount
@@ -41,9 +43,10 @@ const App = () => {
     };
   }, []);
 
-  const handleAssetsLoaded = () => {
+  const handleAssetsLoaded = (loadedSounds) => {
     console.log('Assets are loaded. Proceed to next step.');
     setTimeout(() => setIsLoaded(true), 1000);
+    setSounds(loadedSounds); // Store sounds
   };
 
   if (!appInstance) {

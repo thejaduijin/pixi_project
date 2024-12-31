@@ -36,14 +36,14 @@ const GameContainer = (props) => {
 
   return (
     <>
-      <UiContainer isSpinning={isSpinning} scale={0.8} startSpin={startSpin} setIsSpinning={setIsSpinning}  width={props.width} height={props.height} app={props.app} texture={props.data} />
-      <Reels
+      <UiContainer isSpinning={isSpinning}  startSpin={startSpin} setIsSpinning={setIsSpinning}  width={props.width} height={props.height} app={props.app} texture={props.data} />
+      {/* <Reels
         data={data}
         gridSize={{ rows: 3, columns: 5 }}
         symbolSize={{ width: 200, height: 200 }}
         position={{ x: 445, y: 100 }}
         isSpinning={isSpinning}
-      />
+      /> */}
     </>
   );
 };

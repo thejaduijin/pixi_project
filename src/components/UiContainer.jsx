@@ -1,13 +1,23 @@
 import { Container, Sprite, withPixiApp } from '@pixi/react'
 import React, { useEffect, useState } from 'react'
 import { Howl } from 'howler';
-// import animationData from './path-to-your-animation.json'; 
-// import '/assets/Animations/background/BaseGame_BG.json'; 
-
+import * as PIXI from 'pixi.js';
 
 function UiContainer(props) {
     const [showStopButton, setShowStopButton] = useState(false);
-   
+    const backgroundTexture = PIXI.Assets.get('Loading_Screen_Background');
+    const ReelFrameTexture = PIXI.Assets.get('ReelFrame');
+    const Info_IdleTexture = PIXI.Assets.get('Info_Idle');
+    const Arrow_R_IdleTexture = PIXI.Assets.get('Arrow_R_Idle');
+    const Arrow_L_IdleTexture = PIXI.Assets.get('Arrow_L_Idle');
+    const FrameTexture = PIXI.Assets.get('Frame');
+    const logoTexture = PIXI.Assets.get('logo');
+    const Spin_IdleTexture = PIXI.Assets.get('Spin_Idle');
+    const Stop_IdleTexture = PIXI.Assets.get('Stop_Idle');
+    const Balance_TextTexture = PIXI.Assets.get('Balance_Text');
+    const Win_TextTexture = PIXI.Assets.get('Win_Text');
+    const Bet_TextTexture = PIXI.Assets.get('Bet_Text');
+
     const spinAudio = new Howl({
         src: ['/assets/sounds/reels_spin.wav'], // Replace with the correct file path
         volume: 1.0, // Adjust volume as needed
@@ -33,78 +43,78 @@ function UiContainer(props) {
 
 
     return (
-        <Container width={props.width} height={props.height} x={0} y={-50} scale={0.8}>
+        <Container width={props.width} height={props.height} x={0} y={-50} >
             <Sprite
                 position={0}
-                image="/assets/loading-screen/Loading_Screen_Background.png"
+                texture={backgroundTexture}
             />
             <Sprite
                 x={165}
                 y={0}
-                image="/assets/reelFrame.png"
                 scale={0.9}
+                texture={ReelFrameTexture}
             />
             {/*  Bottom Bar Frame */}
 
             <Sprite
                 x={700}
                 y={0}
-                image="/assets/logo.png"
+                texture={logoTexture}
             />
             {/*  Bottom Bar Frame */}
             <Sprite
                 x={390}
                 y={740}
                 width={1050}
-                image="/assets/Game UI/desktop/Frame.png"
+                texture={FrameTexture}
             />
             {/*  Bottom Bar Frame */}
             <Sprite
                 x={470}
                 y={850}
                 scale={0.6}
-                image="/assets/Game UI/desktop/Frame.png"
+                texture={FrameTexture}
             />
             {/*  Bottom Bar Frame */}
             <Sprite
                 x={720}
                 y={850}
                 scale={0.6}
-                image="/assets/Game UI/desktop/Frame.png"
+                texture={FrameTexture}
             />
             {/*  Bottom Bar Frame */}
             <Sprite
                 x={970}
                 y={850}
                 scale={0.6}
-                image="/assets/Game UI/desktop/Frame.png"
+                texture={FrameTexture}
             />
             {/* Info Button */}
             <Sprite
                 x={400}
                 y={850}
                 scale={0.6}
-                image="/assets/Game UI/desktop/Info_Idle.png"
+                texture={Info_IdleTexture}
             />
             {/* Left Bet Button */}
             <Sprite
                 x={960}
                 y={845}
                 scale={0.6}
-                image="/assets/Game UI/desktop/Arrow_L_Idle.png"
+                texture={Arrow_L_IdleTexture}
             />
             {/* Right Bet Button */}
             <Sprite
                 x={1150}
                 y={845}
                 scale={0.6}
-                image="/assets/Game UI/desktop/Arrow_R_Idle.png"
+                texture={Arrow_R_IdleTexture}
             />
             {/* Spin Button */}
             <Sprite
                 x={1230}
                 y={775}
-                image="/assets/Game UI/desktop/Spin_Idle.png"
+                texture={Spin_IdleTexture}
                 interactive={true}
                 pointerdown={handleSpinClick}
                 cursor="pointer"
@@ -115,7 +125,7 @@ function UiContainer(props) {
             <Sprite
                 x={1230}
                 y={775}
-                image="/assets/Game UI/desktop/Stop_Idle.png"
+                texture={Stop_IdleTexture}
                 interactive={true}
                 pointerdown={handleStopClick}
                 cursor="pointer"
@@ -125,20 +135,20 @@ function UiContainer(props) {
                 x={535}
                 y={860}
                 scale={0.5}
-                image="/assets/Game UI/desktop/Balance_Text.png"
+                texture={Balance_TextTexture}
             />
             <Sprite
                 x={780}
                 y={860}
                 scale={0.5}
-                image="/assets/Game UI/desktop/Win_Text.png"
+                texture={Win_TextTexture}
             />
 
             <Sprite
                 x={1035}
                 y={860}
                 scale={0.5}
-                image="/assets/Game UI/desktop/Bet_Text.png"
+                texture={Bet_TextTexture}
             />
         </Container>
 

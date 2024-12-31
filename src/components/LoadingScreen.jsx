@@ -3,14 +3,12 @@ import { Container, Sprite, Text, withPixiApp } from '@pixi/react';
 import * as PIXI from 'pixi.js';
 
 const LoadingScreen = ({ progress }) => {
-
   return (
     <Container width={window.innerWidth} height={window.innerHeight} x={0} y={-50} scale={0.8}>
       <Sprite
         x={0}
         y={0}
         image="/assets/loading-screen/Loading_Screen_Background.png"
-
       />
       <Sprite
         x={500}
