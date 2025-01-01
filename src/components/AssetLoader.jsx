@@ -58,7 +58,7 @@ function AssetLoader({ onAssetsLoaded,app }) {
     }, []); 
 
     return (
-        <Container name="LoadingContainer">
+        <Container name="LoadingContainer" scale={0.8}>
             <LoadingScreen progress={progress} loadedSounds={sounds} app={app} />
         </Container>
     );

@@ -57,35 +57,35 @@ function UiContainer(props) {
             {/*  Bottom Bar Frame */}
 
             <Sprite
-                x={700}
-                y={0}
+                x={800}
+                y={350}
                 texture={logoTexture}
             />
             {/*  Bottom Bar Frame */}
             <Sprite
-                x={390}
-                y={740}
+                x={500}
+                y={1080}
                 width={1050}
                 texture={FrameTexture}
             />
             {/*  Bottom Bar Frame */}
             <Sprite
-                x={470}
-                y={850}
+                x={550}
+                y={1200}
                 scale={0.6}
                 texture={FrameTexture}
             />
             {/*  Bottom Bar Frame */}
             <Sprite
-                x={720}
-                y={850}
+                x={800}
+                y={1200}
                 scale={0.6}
                 texture={FrameTexture}
             />
             {/*  Bottom Bar Frame */}
             <Sprite
-                x={970}
-                y={850}
+                x={1050}
+                y={1200}
                 scale={0.6}
                 texture={FrameTexture}
             />
@@ -133,20 +133,20 @@ function UiContainer(props) {
             />
             <Sprite
                 x={535}
-                y={860}
+                y={1150}
                 scale={0.5}
                 texture={Balance_TextTexture}
             />
             <Sprite
                 x={780}
-                y={860}
+                y={1150}
                 scale={0.5}
                 texture={Win_TextTexture}
             />
 
             <Sprite
                 x={1035}
-                y={860}
+                y={1150}
                 scale={0.5}
                 texture={Bet_TextTexture}
             />

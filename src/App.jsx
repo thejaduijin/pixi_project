@@ -31,10 +31,12 @@ const App = () => {
     // app.stage.addChild(uiContainer);
 
     const handleResize = () => {
-      const newWidth = window.innerWidth;
-      const newHeight = window.innerHeight - 5;
-      setDimensions({ width: newWidth, height: newHeight });
-      app.renderer.resize(newWidth, newHeight);
+      if( window.innerWidth > 700){
+        const newWidth = window.innerWidth;
+        const newHeight = window.innerHeight - 5;
+        setDimensions({ width: newWidth, height: newHeight });
+        app.renderer.resize(newWidth, newHeight);
+      }
     };
     handleResize(); //for initial sizing
 
