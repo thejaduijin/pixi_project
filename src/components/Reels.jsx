@@ -1,9 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import { Container, Sprite, withPixiApp } from "@pixi/react";
 import * as PIXI from "pixi.js";
-const Reels = ({ data, gridSize, symbolSize, position, isSpinning }) => {
+
+
+const Reels = ({ data, gridSize, symbolSize, position, isSpinning, randomImages }) => {
   const { rows, columns } = gridSize; // 3x5 grid
   const containerRef = useRef(null);
+  console.log(randomImages)
 
   useEffect(() => {
     if (!isSpinning) return;
@@ -39,7 +42,7 @@ const Reels = ({ data, gridSize, symbolSize, position, isSpinning }) => {
 
   return (
     <Container position={position} ref={containerRef} scale={0.8} mask={mask}>
-      {data.map((symbol, index) => {
+      {randomImages.map((symbol, index) => {
         const col = index % columns; // Column index
         const row = Math.floor(index / columns); // Row index
 
@@ -61,6 +64,7 @@ const Reels = ({ data, gridSize, symbolSize, position, isSpinning }) => {
             width={symbolSize.width}
             height={symbolSize.height}
             image={symbol.textureCacheIds[0]}
+            // texture={symbol.textureCacheIds[1]}
             key={index}
           />
         );
