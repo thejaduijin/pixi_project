@@ -58,7 +58,7 @@ function UiContainer(props) {
                 x={50}
                 y={50}
             /> */}
-            <Container>
+            <Container scale={0.8} y={-20}>
                 <Sprite
                     x={200}
                     y={40}
