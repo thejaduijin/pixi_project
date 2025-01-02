@@ -34,7 +34,7 @@ const Reels = ({ data, gridSize, symbolSize, position, isSpinning }) => {
 
   const mask = new PIXI.Graphics();
   mask.beginFill(0xffffff);
-  mask.drawRect(100, 180, 1250, 500);
+  mask.drawRect(100, 100, 1250, 430);
   mask.endFill();
 
   return (

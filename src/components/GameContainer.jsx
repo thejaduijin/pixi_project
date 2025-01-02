@@ -41,8 +41,8 @@ const GameContainer = (props) => {
       <Reels
         data={data}
         gridSize={{ rows: 3, columns: 5 }}
-        symbolSize={{ width: 220, height: 220 }}
-        position={{ x: 540, y: 200 }}
+        symbolSize={{ width: 180, height: 180 }}
+        position={{ x: 440, y: 140 }}
         isSpinning={isSpinning}
       />
     </>
