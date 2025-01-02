@@ -64,7 +64,7 @@ const GameContainer = (props) => {
         randomImages={randomImages}
         gridSize={{ rows: 3, columns: 5 }}
         symbolSize={{ width: 180, height: 180 }}
-        position={{ x: 540, y: 140 }}
+        position={{ x: 550, y: 140 }}
         isSpinning={isSpinning}
       />
     </>

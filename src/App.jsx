@@ -19,19 +19,10 @@ const App = () => {
       height: dimensions.height,
       resizeTo: window,
     });
-
     setAppInstance(app);
-    globalThis.__PIXI_APP__ = app;
-
-    // const uiContainer = new PIXI.Container({
-    //   x: 0,
-    //   y: 0,
-    // });
-    // uiContainer.name = "UiContainer";
-    // app.stage.addChild(uiContainer);
 
     const handleResize = () => {
-      if( window.innerWidth > 700){
+      if (window.innerWidth > 700) {
         const newWidth = window.innerWidth;
         const newHeight = window.innerHeight - 5;
         setDimensions({ width: 800, height: 500 });
@@ -60,7 +51,6 @@ const App = () => {
 
   return (
     <Stage
-      // app={appInstance}
       id="mainCanvas"
       width={dimensions.width}
       height={dimensions.height}
