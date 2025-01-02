@@ -13,9 +13,6 @@ function AssetLoader({ onAssetsLoaded, app }) {
         images: [
             { name: 'Loading_Screen_Background', url: '/assets/loading-screen/Loading_Screen_Background.png' },
             { name: 'Game_Logo', url: '/assets/loading-screen/Game_Logo.png' },
-            { name: 'BaseGame_BG', url: '/assets/Animations/background/BaseGame_BG.json' },
-            { name: 'Pay_Lines', url: '/assets/Animations/payline/paylines.json' },
-            { name: 'Popups', url: '/assets/Animations/popup/Popups.json' },
             { name: 'Autoplay_btn', url: '/assets/Game UI/Autoplay.png' },
             { name: 'Balance', url: '/assets/Game UI/Balance.png' },
             { name: 'Bet', url: '/assets/Game UI/Bet.png' },
@@ -80,28 +77,3 @@ function AssetLoader({ onAssetsLoaded, app }) {
 }
 
 export default withPixiApp(AssetLoader);
-
-
-
-// PIXI.loader.add('bgAnimation', '/assets/Animations/background/BaseGame_BG.json').load((loader, resources) => {
-//     const textures = [];
-//     const frames = resources.animation.textures;
-
-//     // Extract textures for the animation
-//     for (const frame in frames) {
-//         textures.push(frames[frame]);
-//     }
-
-//     // Create the animated sprite
-//     const animatedSprite = new PIXI.AnimatedSprite(textures);
-
-//     // Configure the animated sprite
-//     animatedSprite.animationSpeed = 0.5; // Adjust speed
-//     animatedSprite.loop = true;          // Set loop
-//     animatedSprite.play();               // Start animation
-//     animatedSprite.x = 100;              // Set position
-//     animatedSprite.y = 100;
-
-//     // Add to stage or container
-//     // app.stage.addChild(animatedSprite);
-// });

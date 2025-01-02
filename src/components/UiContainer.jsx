@@ -17,7 +17,6 @@ function UiContainer(props) {
     const Balance_TextTexture = PIXI.Assets.get('Balance_Text');
     const Win_TextTexture = PIXI.Assets.get('Win_Text');
     const Bet_TextTexture = PIXI.Assets.get('Bet_Text');
-    const bgAnimationTextures = PIXI.Assets.get('bgAnimation').textures;
 
     const spinAudio = new Howl({
         src: ['/assets/sounds/reels_spin.wav'],
@@ -49,15 +48,6 @@ function UiContainer(props) {
                 position={0}
                 texture={backgroundTexture}
             />
-            {/* <AnimatedSprite
-                textures={bgAnimationTextures}
-                isPlaying={true}
-                initialFrame={0}
-                animationSpeed={0.5}
-                loop={true}
-                x={50}
-                y={50}
-            /> */}
             <Container scale={0.8} x={100} y={-20}>
                 <Sprite
                     x={200}
@@ -172,11 +162,11 @@ function UiContainer(props) {
                             fill: ['#FFD700', '#FFA500'], // Gradient for golden effect
                             fontSize: 32,
                             fontWeight: 'bold',
-                            dropShadow: true, // Enable shadow
-                            dropShadowColor: '#000000', // Shadow color (black)
-                            dropShadowBlur: 4, // Shadow blur radius
-                            dropShadowAngle: Math.PI / 4, // Shadow angle
-                            dropShadowDistance: 5, // Shadow distance from text
+                            dropShadow: true,
+                            dropShadowColor: '#000000',
+                            dropShadowBlur: 4,
+                            dropShadowAngle: Math.PI / 4,
+                            dropShadowDistance: 5,
                         })
                     }
                 />
