@@ -4,7 +4,7 @@ import LoadingScreen from './LoadingScreen';
 import * as PIXI from 'pixi.js';
 
 
-function AssetLoader({ onAssetsLoaded,app }) {
+function AssetLoader({ onAssetsLoaded, app }) {
     const [progress, setProgress] = useState(0);
     const sounds = {}; // Store sounds here
 
@@ -31,6 +31,11 @@ function AssetLoader({ onAssetsLoaded,app }) {
             { name: 'Frame', url: '/assets/Game UI/desktop/Frame.png' },
             { name: 'logo', url: '/assets/logo.png' },
         ],
+        animation: [
+            { name: 'bgAnimation', url: '/assets/Animations/background/BaseGame_BG.json' },
+            { name: 'paylineAnimation', url: '/assets/Animations/payline/paylines.json' },
+            { name: 'popupAnimation', url: '/assets/Animations/popup/Popups.json' },
+        ]
     };
 
     async function preloadAssets() {
@@ -41,6 +46,16 @@ function AssetLoader({ onAssetsLoaded,app }) {
         assetList.images.forEach(asset => {
             promises.push(PIXI.Assets.load({ src: asset.url, alias: asset.name }));
             loaded += 1;
+        });
+
+        // Load animations
+        assetList.animation.forEach(animation => {
+            promises.push(
+                PIXI.Assets.load({ src: animation.url, alias: animation.name }).then(() => {
+                    loaded += 1;
+                    setProgress(Math.floor((loaded / (assetList.images.length + assetList.animation.length)) * 100));
+                })
+            );
         });
 
         setProgress(Math.floor((loaded / promises.length) * 100));
@@ -55,7 +70,7 @@ function AssetLoader({ onAssetsLoaded,app }) {
     // Start preloading assets when the component mounts
     useEffect(() => {
         preloadAssets();
-    }, []); 
+    }, []);
 
     return (
         <Container name="LoadingContainer">
@@ -65,3 +80,28 @@ function AssetLoader({ onAssetsLoaded,app }) {
 }
 
 export default withPixiApp(AssetLoader);
+
+
+
+// PIXI.loader.add('bgAnimation', '/assets/Animations/background/BaseGame_BG.json').load((loader, resources) => {
+//     const textures = [];
+//     const frames = resources.animation.textures;
+
+//     // Extract textures for the animation
+//     for (const frame in frames) {
+//         textures.push(frames[frame]);
+//     }
+
+//     // Create the animated sprite
+//     const animatedSprite = new PIXI.AnimatedSprite(textures);
+
+//     // Configure the animated sprite
+//     animatedSprite.animationSpeed = 0.5; // Adjust speed
+//     animatedSprite.loop = true;          // Set loop
+//     animatedSprite.play();               // Start animation
+//     animatedSprite.x = 100;              // Set position
+//     animatedSprite.y = 100;
+
+//     // Add to stage or container
+//     // app.stage.addChild(animatedSprite);
+// });

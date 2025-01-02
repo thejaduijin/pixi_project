@@ -54,7 +54,7 @@ const LoadingScreen = ({ progress, app }) => {
       <Text
         text={`Loading... ${progress}%`}
         anchor={0.5}
-        x={window.innerWidth / 2 + 75}
+        x={1050}
         y={window.innerHeight}
         style={
           new PIXI.TextStyle({

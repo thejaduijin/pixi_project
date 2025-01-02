@@ -1,4 +1,4 @@
-import { Container, Sprite, withPixiApp } from '@pixi/react'
+import { AnimatedSprite, Container, Sprite, withPixiApp } from '@pixi/react'
 import React, { useEffect, useState } from 'react'
 import { Howl } from 'howler';
 import * as PIXI from 'pixi.js';
@@ -17,6 +17,7 @@ function UiContainer(props) {
     const Balance_TextTexture = PIXI.Assets.get('Balance_Text');
     const Win_TextTexture = PIXI.Assets.get('Win_Text');
     const Bet_TextTexture = PIXI.Assets.get('Bet_Text');
+    const bgAnimationTextures = PIXI.Assets.get('bgAnimation').textures;
 
     const spinAudio = new Howl({
         src: ['/assets/sounds/reels_spin.wav'],
@@ -48,6 +49,15 @@ function UiContainer(props) {
                 position={0}
                 texture={backgroundTexture}
             />
+            {/* <AnimatedSprite
+                textures={bgAnimationTextures}
+                isPlaying={true}
+                initialFrame={0}
+                animationSpeed={0.5}
+                loop={true}
+                x={50}
+                y={50}
+            /> */}
             <Container>
                 <Sprite
                     x={200}
