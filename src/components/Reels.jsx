@@ -32,14 +32,28 @@ const Reels = ({ data, gridSize, symbolSize, position, isSpinning }) => {
     };
   }, [isSpinning, rows, symbolSize.height]);
 
+  const mask = new PIXI.Graphics();
+  mask.beginFill(0xffffff);
+  mask.drawRect(100, 180, 1250, 500);
+  mask.endFill();
+
   return (
-    <Container position={position}  ref={containerRef} scale={0.8} >
+    <Container position={position} ref={containerRef} scale={0.8} mask={mask}>
       {data.map((symbol, index) => {
         const col = index % columns; // Column index
         const row = Math.floor(index / columns); // Row index
 
-        const x = col * symbolSize.width; // X position
-        const y = row * symbolSize.height; // Y position
+        let x = col * symbolSize.width; // X position
+        let y = row * symbolSize.height; // Y position
+
+        if (col == 2) {
+          x = x + 15;
+        } else if (col == 3) {
+          x = x + 25;
+        } else if (col == 4) {
+          x = x + 35;
+        }
+
         return (
           <Sprite
             x={x - 165}

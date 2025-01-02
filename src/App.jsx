@@ -34,13 +34,13 @@ const App = () => {
       if( window.innerWidth > 700){
         const newWidth = window.innerWidth;
         const newHeight = window.innerHeight - 5;
-        setDimensions({ width: newWidth, height: newHeight });
+        setDimensions({ width: 800, height: 500 });
         app.renderer.resize(newWidth, newHeight);
       }
     };
-    handleResize(); //for initial sizing
+    // handleResize(); //for initial sizing
 
-    window.addEventListener('resize', handleResize);
+    // window.addEventListener('resize', handleResize);
 
     return () => {
       app.destroy(true, true); // Cleanup on unmount

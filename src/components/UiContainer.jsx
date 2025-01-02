@@ -19,137 +19,139 @@ function UiContainer(props) {
     const Bet_TextTexture = PIXI.Assets.get('Bet_Text');
 
     const spinAudio = new Howl({
-        src: ['/assets/sounds/reels_spin.wav'], // Replace with the correct file path
-        volume: 1.0, // Adjust volume as needed
+        src: ['/assets/sounds/reels_spin.wav'],
+        volume: 1.0,
     });
 
     const handleSpinClick = () => {
-        spinAudio.play(); // Play the audio
-        props.startSpin(); // Start the spin
-        setShowStopButton(true); // Show the stop button
+        spinAudio.play();
+        props.startSpin();
+        setShowStopButton(true);
     };
 
     const handleStopClick = () => {
         props.setIsSpinning(false)
         setShowStopButton(false);
-        spinAudio.stop(); // Stop the audio
+        spinAudio.stop();
     };
 
     useEffect(() => {
         if (!props.isSpinning) {
-            setShowStopButton(false); // Automatically hide the stop button
+            setShowStopButton(false);
         }
     }, [props.isSpinning]);
 
 
     return (
-        <Container width={props.width} height={props.height} x={0} y={-50} >
+        <Container width={props.width} height={props.height} >
             <Sprite
                 position={0}
                 texture={backgroundTexture}
             />
-            <Sprite
-                x={window.innerWidth / 3}
-                y={window.innerHeight / 2}
-                scale={0.9}
-                texture={ReelFrameTexture}
-            />
-            {/*  Bottom Bar Frame */}
+            <Container>
+                <Sprite
+                    x={200}
+                    y={40}
+                    scale={0.8}
+                    texture={ReelFrameTexture}
+                />
+                {/*  Bottom Bar Frame */}
 
-            <Sprite
-                x={800}
-                y={350}
-                texture={logoTexture}
-            />
-            {/*  Bottom Bar Frame */}
-            <Sprite
-                x={500}
-                y={1080}
-                width={1050}
-                texture={FrameTexture}
-            />
-            {/*  Bottom Bar Frame */}
-            <Sprite
-                x={550}
-                y={1200}
-                scale={0.6}
-                texture={FrameTexture}
-            />
-            {/*  Bottom Bar Frame */}
-            <Sprite
-                x={800}
-                y={1200}
-                scale={0.6}
-                texture={FrameTexture}
-            />
-            {/*  Bottom Bar Frame */}
-            <Sprite
-                x={1050}
-                y={1200}
-                scale={0.6}
-                texture={FrameTexture}
-            />
-            {/* Info Button */}
-            <Sprite
-                x={400}
-                y={850}
-                scale={0.6}
-                texture={Info_IdleTexture}
-            />
-            {/* Left Bet Button */}
-            <Sprite
-                x={960}
-                y={845}
-                scale={0.6}
-                texture={Arrow_L_IdleTexture}
-            />
-            {/* Right Bet Button */}
-            <Sprite
-                x={1150}
-                y={845}
-                scale={0.6}
-                texture={Arrow_R_IdleTexture}
-            />
-            {/* Spin Button */}
-            <Sprite
-                x={1230}
-                y={775}
-                texture={Spin_IdleTexture}
-                interactive={true}
-                pointerdown={handleSpinClick}
-                cursor="pointer"
-                visible={!showStopButton}
-            />
+                <Sprite
+                    x={600}
+                    y={0}
+                    texture={logoTexture}
+                />
+                {/*  Bottom Bar Frame */}
+                <Sprite
+                    x={410}
+                    y={680}
+                    width={900}
+                    texture={FrameTexture}
+                />
+                {/*  Bottom Bar Frame */}
+                <Sprite
+                    x={450}
+                    y={780}
+                    scale={0.6}
+                    texture={FrameTexture}
+                />
+                {/*  Bottom Bar Frame */}
+                <Sprite
+                    x={700}
+                    y={780}
+                    scale={0.6}
+                    texture={FrameTexture}
+                />
+                {/*  Bottom Bar Frame */}
+                <Sprite
+                    x={950}
+                    y={780}
+                    scale={0.6}
+                    texture={FrameTexture}
+                />
+                {/* Info Button */}
+                <Sprite
+                    x={370}
+                    y={780}
+                    scale={0.6}
+                    texture={Info_IdleTexture}
+                />
+                {/* Left Bet Button */}
+                <Sprite
+                    x={940}
+                    y={775}
+                    scale={0.6}
+                    texture={Arrow_L_IdleTexture}
+                />
+                {/* Right Bet Button */}
+                <Sprite
+                    x={1120}
+                    y={775}
+                    scale={0.6}
+                    texture={Arrow_R_IdleTexture}
+                />
+                {/* Spin Button */}
+                <Sprite
+                    x={1200}
+                    y={720}
+                    texture={Spin_IdleTexture}
+                    interactive={true}
+                    pointerdown={handleSpinClick}
+                    cursor="pointer"
+                    visible={!showStopButton}
+                />
 
-            {/* Stop Button */}
-            <Sprite
-                x={1230}
-                y={775}
-                texture={Stop_IdleTexture}
-                interactive={true}
-                pointerdown={handleStopClick}
-                cursor="pointer"
-                visible={showStopButton}
-            />
-            <Sprite
-                x={535}
-                y={1150}
-                scale={0.5}
-                texture={Balance_TextTexture}
-            />
-            <Sprite
-                x={780}
-                y={1150}
-                scale={0.5}
-                texture={Win_TextTexture}
-            />
+                {/* Stop Button */}
+                <Sprite
+                    x={1200}
+                    y={720}
+                    texture={Stop_IdleTexture}
+                    interactive={true}
+                    pointerdown={handleStopClick}
+                    cursor="pointer"
+                    visible={showStopButton}
+                />
+                <Sprite
+                    x={520}
+                    y={790}
+                    scale={0.5}
+                    texture={Balance_TextTexture}
+                />
+                <Sprite
+                    x={760}
+                    y={790}
+                    scale={0.5}
+                    texture={Win_TextTexture}
+                />
 
-            <Sprite
-                x={1035}
-                y={1150}
-                scale={0.5}
-                texture={Bet_TextTexture}
-            />
+                <Sprite
+                    x={1015}
+                    y={790}
+                    scale={0.5}
+                    texture={Bet_TextTexture}
+                />
+            </Container>
         </Container>
 
     )

@@ -26,28 +26,29 @@ const GameContainer = (props) => {
         }
         return updatedData;
       });
-    }, 100); // Adjusted interval for smoothness
+    }, 200); // Adjusted interval for smoothness
 
     setTimeout(() => {
       clearInterval(interval);
       setIsSpinning(false);
+      console.log("ysssssssssssssssssss")
     }, 2000);
   };
 
   return (
     <>
-      <UiContainer isSpinning={isSpinning}  startSpin={startSpin} setIsSpinning={setIsSpinning}  width={props.width} height={props.height} app={props.app} texture={props.data} />
-      {/* <Reels
+      <UiContainer isSpinning={isSpinning} startSpin={startSpin} setIsSpinning={setIsSpinning} width={props.width} height={props.height} app={props.app} texture={props.data} />
+      <Reels
         data={data}
         gridSize={{ rows: 3, columns: 5 }}
-        symbolSize={{ width: 200, height: 200 }}
-        position={{ x: 445, y: 100 }}
+        symbolSize={{ width: 220, height: 220 }}
+        position={{ x: 540, y: 200 }}
         isSpinning={isSpinning}
-      /> */}
+      />
     </>
   );
 };
 
- export default withPixiApp(GameContainer);
+export default withPixiApp(GameContainer);
 
 

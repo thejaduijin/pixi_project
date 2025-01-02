@@ -21,7 +21,7 @@ const LoadingScreen = ({ progress, app }) => {
   // app.stage.addChild(uiContainer);
 
   return (
-    <Container width={window.innerWidth} height={window.innerHeight} x={0} y={-50} scale={0.8}>
+    <Container width={window.innerWidth} height={window.innerHeight} x={-100} y={-50}>
       <Sprite
         x={0}
         y={0}
@@ -54,8 +54,8 @@ const LoadingScreen = ({ progress, app }) => {
       <Text
         text={`Loading... ${progress}%`}
         anchor={0.5}
-        x={window.innerWidth / 2 + 275}
-        y={window.innerHeight + 175}
+        x={window.innerWidth / 2 + 75}
+        y={window.innerHeight}
         style={
           new PIXI.TextStyle({
             fill: '#ffffff',
