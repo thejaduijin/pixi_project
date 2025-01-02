@@ -1,4 +1,4 @@
-import { AnimatedSprite, Container, Sprite, withPixiApp } from '@pixi/react'
+import { AnimatedSprite, Container, Sprite, Text, withPixiApp } from '@pixi/react'
 import React, { useEffect, useState } from 'react'
 import { Howl } from 'howler';
 import * as PIXI from 'pixi.js';
@@ -161,6 +161,26 @@ function UiContainer(props) {
                     scale={0.5}
                     texture={Bet_TextTexture}
                 />
+
+                <Text
+                    text={`GOOD LUCK`}
+                    anchor={0.5}
+                    x={820}
+                    y={725}
+                    style={
+                        new PIXI.TextStyle({
+                            fill: ['#FFD700', '#FFA500'], // Gradient for golden effect
+                            fontSize: 32,
+                            fontWeight: 'bold',
+                            dropShadow: true, // Enable shadow
+                            dropShadowColor: '#000000', // Shadow color (black)
+                            dropShadowBlur: 4, // Shadow blur radius
+                            dropShadowAngle: Math.PI / 4, // Shadow angle
+                            dropShadowDistance: 5, // Shadow distance from text
+                        })
+                    }
+                />
+
             </Container>
         </Container>
 
