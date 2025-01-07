@@ -9,4 +9,4 @@ Currently, two official plugins are available:
 
 
 # How to start project
- To start the project run npn install and then run npm run dev.
+ To start the project run npm install and then run npm run dev.
